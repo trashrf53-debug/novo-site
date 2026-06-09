@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Presentes - Casamento</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #d16ba5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .gift {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .gift h3 {
+      margin-top: 0;
+    }
+    .pix-button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .pix-button:hover {
+      background: #45a049;
+    }
+    footer {
+      background: #d16ba5;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background: #d16ba5;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #c04a8b;
+    }
+    .qr {
+      margin-top: 10px;
+    }
+    .qr img {
+      max-width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lista de Presentes do Nosso Casamento</h1>
+    <p>Obrigado por fazer parte desse momento especial!</p>
+  </header>
+
+  <div class="container">
+    <div class="gift">
+      <h3>Jogo de Panelas</h3>
+      <p>Valor sugerido: R$ 300</p>
+      <button class="pix-button" onclick="copiarPix('chavepix@exemplo.com')">Copiar chave Pix</button>
+      <div class="qr">
+        <p>Ou escaneie o QR Code:</p>
+        <img src="qr-code-panela.png" alt="QR Code Pix">
+      </div>
+    </div>
+
+    <div class="gift">
+      <h3>Máquina de Café</h3>
+      <p>Valor sugerido: R$ 500</p>
+      <button class="pix-button" onclick="copiarPix('chavepix@exemplo.com')">Copiar chave Pix</button>
+      <div class="qr">
+        <p>Ou escaneie o QR Code:</p>
+        <img src="qr-code-cafe.png" alt="QR Code Pix">
+      </div>
+    </div>
+
+    <h2>Confirme seu presente</h2>
+    <form id="formPresente">
+      <label for="nome">Seu nome:</label>
+      <input type="text" id="nome" required>
+      
+      <label for="mensagem">Mensagem para os noivos:</label>
+      <textarea id="mensagem" rows="4"></textarea>
+      
+      <button type="submit">Enviar confirmação</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>Com carinho, Michell & [Nome da Noiva] 💕</p>
+  </footer>
+
+  <script>
+    function copiarPix(chave) {
+      navigator.clipboard.writeText(chave);
+      alert("Chave Pix copiada: " + chave + "\nAbra seu app bancário para concluir o pagamento.");
+    }
+
+    document.getElementById("formPresente").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const mensagem = document.getElementById("mensagem").value;
+      alert("Obrigado, " + nome + "! Sua mensagem foi registrada:\n\n" + mensagem);
+      document.getElementById("formPresente").reset();
+    });
+  </script>
+</body>
+</html>
